@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre("save", function(next) {
-  // if (this.method !== 'local') return next();
+  // if (this.method !== 'local') return next()
   return bcrypt.hash(this.password, saltRounds, (err, hashedPW) => {
     console.log("pre save --- ", {err, hashedPW});
     if (err) return next(err)
